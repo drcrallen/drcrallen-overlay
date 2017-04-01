@@ -12,7 +12,7 @@ SRC_URI="http://archive.apache.org/dist/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86"
-IUSE="network-isolator perftools"
+IUSE="network-isolator perftools install-module-dependencies"
 SLOT="0"
 
 RDEPEND=">=dev-libs/apr-1.5.2
@@ -35,10 +35,12 @@ src_configure() {
         export LD_LIBRARY_PATH="${MESOS_LIB_PREFIX}/lib:$LD_LIBRARY_PATH"
         MESOS_CONF_ARGS="--build=x86_64-pc-linux-gnu --host=x86_64-pc-linux-gnu \
                 $(use_enable perftools) \
+                $(use_enable install-module-dependencies) \
                 $(use_with network-isolator) \
                 --disable-python \
                 --disable-java \
                 --enable-optimize \
+                --disable-dependency-tracking \
                 --with-apr=${MESOS_LIB_PREFIX} \
                 --with-curl=${MESOS_LIB_PREFIX} \
                 --with-sasl=${MESOS_LIB_PREFIX} \
