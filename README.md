@@ -10,7 +10,8 @@ In all examples below, `${THIS_OVERLAY_DIR}` refers to the directory **INSIDE TH
 Mesos can be installed using the `emerge` command specific for the board you are building for. Below is an example of using one for an `amd64-usr` board.
 
 ```
-PORTDIR_OVERLAY="${PORTDIR_OVERLAY} ${THIS_OVERLAY_DIR}" ACCEPT_KEYWORDS="~amd64" emerge-amd64-usr -D =sys-cluster/mesos-1.2.0
+PORTDIR_OVERLAY="${PORTDIR_OVERLAY} ${THIS_OVERLAY_DIR}" emerge-amd64-usr --ask --autounmask-write -D =sys-cluster/mesos-1.2.0
+PORTDIR_OVERLAY="${PORTDIR_OVERLAY} ${THIS_OVERLAY_DIR}" emerge-amd64-usr --ask -D =sys-cluster/mesos-1.2.0
 ```
 ### Generating New Manifest Entries
 To generate new manifest entries from within a `cork` use the following command
